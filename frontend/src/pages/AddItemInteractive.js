@@ -23,7 +23,7 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://smartfoodai-backend.onrender.com";
 
 const steps = ["Food name", "Category", "Storage", "Packaging", "Condition"];
 

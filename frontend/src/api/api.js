@@ -1,4 +1,5 @@
-const API_BASE = "http://127.0.0.1:8000";
+
+const API_BASE = "https://smartfoodai-backend.onrender.com";
 
 // Predict shelf life from FastAPI
 export async function predictShelfLife(data) {

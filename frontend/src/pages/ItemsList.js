@@ -26,7 +26,7 @@ import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined";
 import SortRoundedIcon from "@mui/icons-material/SortRounded";
 import RefreshRoundedIcon from "@mui/icons-material/RefreshRounded";
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://smartfoodai-backend.onrender.com";
 
 const green = "#16845b";
 
