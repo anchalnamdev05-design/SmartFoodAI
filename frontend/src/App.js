@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,28 +15,27 @@ import AddItemInteractive from "./pages/AddItemInteractive";
 import ItemsList from "./pages/ItemsList";
 import Settings from "./pages/Settings";
 
+function getActivePage(pathname) {
+  if (pathname === "/") return "dashboard";
+  if (pathname === "/add") return "add";
+  if (pathname === "/items" || pathname === "/urgent") return "items";
+  if (pathname === "/settings") return "settings";
+  return "dashboard";
+}
+
 function AppLayout() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const getActivePage = () => {
-    if (location.pathname === "/") return "dashboard";
-    if (location.pathname === "/add") return "add";
-    if (
-      location.pathname === "/items" ||
-      location.pathname === "/urgent"
-    ) return "items";
-    if (location.pathname === "/settings") return "settings";
-    return "dashboard";
-  };
+  const [active, setActive] = useState(() =>
+    getActivePage(location.pathname)
+  );
 
-  const [active, setActive] = useState(getActivePage);
-
-  React.useEffect(() => {
-    setActive(getActivePage());
+  useEffect(() => {
+    setActive(getActivePage(location.pathname));
   }, [location.pathname]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleAddItem = () => navigate("/add");
     const handleViewItems = () => navigate("/items");
 

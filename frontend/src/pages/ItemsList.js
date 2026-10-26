@@ -1,5 +1,5 @@
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Box,
   Paper,
@@ -95,7 +95,8 @@ export default function ItemsList({ urgent = false }) {
   const [error, setError] = useState("");
   const [actionLoading, setActionLoading] = useState(false);
 
-  const fetchItems = async () => {
+  
+  const fetchItems = useCallback(async () => {
     setLoading(true);
     setError("");
 
@@ -106,22 +107,27 @@ export default function ItemsList({ urgent = false }) {
 
       const res = await fetch(endpoint);
 
-      if (!res.ok) throw new Error("Could not load inventory.");
+      if (!res.ok) {
+        throw new Error("Could not load inventory.");
+      }
 
       const data = await res.json();
       const list = Array.isArray(data) ? data : data.items || [];
       setItems(list);
     } catch (err) {
       console.error("Error fetching items:", err);
-      setError("Could not connect to the backend. Check that FastAPI is running.");
+      setError(
+        "Could not connect to the backend. Check that FastAPI is running."
+      );
     } finally {
       setLoading(false);
     }
-  };
+  }, [urgent]);
 
   useEffect(() => {
     fetchItems();
-  }, [urgent]);
+  }, [fetchItems]);
+
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this item?")) return;
