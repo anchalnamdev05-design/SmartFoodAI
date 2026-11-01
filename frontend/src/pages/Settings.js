@@ -20,7 +20,7 @@ import RefreshRoundedIcon from "@mui/icons-material/RefreshRounded";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://smartfoodai-backend.onrender.com";
 
 const Settings = () => {
   const [backendStatus, setBackendStatus] = useState("checking");

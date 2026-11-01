@@ -14,7 +14,7 @@ import WifiRoundedIcon from "@mui/icons-material/WifiRounded";
 import WifiOffRoundedIcon from "@mui/icons-material/WifiOffRounded";
 import { useLocation } from "react-router-dom";
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://smartfoodai-backend.onrender.com";
 
 const pageTitles = {
   "/": "Dashboard",
